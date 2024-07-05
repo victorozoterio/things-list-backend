@@ -1,0 +1,16 @@
+services:
+  db:
+    container_name: to-do-list-database
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=to-do-list
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+    ports:
+      - 5432:5432
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+
+volumes:
+  pg-data:
