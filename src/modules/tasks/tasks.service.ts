@@ -28,13 +28,6 @@ export class TasksService {
     return this.repository.save(task);
   }
 
-  async changeStatus(uuid: string) {
-    const task = await this.repository.findOneBy({ uuid });
-    if (!task) throw new NotFoundException('Task does not exists.');
-    this.repository.merge(task, { isDone: !task.isDone });
-    return this.repository.save(task);
-  }
-
   async remove(uuid: string) {
     const task = await this.repository.findOneBy({ uuid });
     if (!task) throw new NotFoundException('Task does not exists.');

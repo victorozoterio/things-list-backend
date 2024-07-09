@@ -17,9 +17,6 @@ export class TaskEntity {
   @Column({ name: 'priority' })
   priority: string;
 
-  @Column({ name: 'is_done' })
-  isDone: boolean;
-
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;
 

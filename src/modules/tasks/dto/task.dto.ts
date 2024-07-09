@@ -11,9 +11,6 @@ export class TaskDto {
   @ApiProperty({ enum: TaskPriority })
   priority: TaskPriority;
 
-  @ApiProperty({ default: false })
-  isDone: boolean;
-
   @ApiProperty()
   createdAt: Date;
 

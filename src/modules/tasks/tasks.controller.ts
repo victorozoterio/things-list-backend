@@ -28,7 +28,7 @@ export class TasksController {
   @Post()
   @ApiOperation({ summary: 'Creates a new task in the system.' })
   @ApiResponse({ status: 201, type: CreateTaskResponseDto })
-  @ApiQuery({ name: 'priority', enum: TaskPriority })
+  @ApiQuery({ name: 'priority', enum: TaskPriority, required: false })
   async create(@Body() dto: CreateTaskDto, @Query() queryDto: CreateTaskQueryDto) {
     return this.tasksService.create(dto, queryDto.priority);
   }
@@ -45,13 +45,6 @@ export class TasksController {
   @ApiResponse({ status: 200, type: UpdateTaskResponseDto })
   async update(@Param('uuid', new ParseUUIDPipe()) uuid: string, @Body() dto: UpdateTaskDto) {
     return this.tasksService.update(uuid, dto);
-  }
-
-  @Patch('/change-status/:uuid')
-  @ApiOperation({ summary: 'Updates status of an existing task.' })
-  @ApiResponse({ status: 200, type: UpdateTaskResponseDto })
-  async changeStatus(@Param('uuid', new ParseUUIDPipe()) uuid: string) {
-    return await this.tasksService.changeStatus(uuid);
   }
 
   @Delete(':uuid')

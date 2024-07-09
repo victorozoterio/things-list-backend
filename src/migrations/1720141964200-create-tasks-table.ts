@@ -24,11 +24,6 @@ export class CreateTasksTable1720141964200 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'is_done',
-            type: 'boolean',
-            default: false,
-          },
-          {
             name: 'created_at',
             type: 'timestamp with time zone',
             default: 'CURRENT_TIMESTAMP',
