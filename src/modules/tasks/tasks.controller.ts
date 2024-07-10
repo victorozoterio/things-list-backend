@@ -17,8 +17,8 @@ import { UpdateTaskDto } from './dto/update-task.dto';
 import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { TaskDto } from './dto/task.dto';
 import { CreateTaskResponseDto } from './dto/create-task-response.dto';
-import { TaskPriority } from 'src/utils/enums';
 import { UpdateTaskResponseDto } from './dto/update-task-response.dto';
+import { TaskPriority } from '../../utils/enums';
 
 @Controller('tasks')
 @ApiTags('Tasks')
