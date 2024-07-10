@@ -22,6 +22,7 @@ export class CreateTasksTable1720141964200 implements MigrationInterface {
           {
             name: 'priority',
             type: 'varchar',
+            default: `'baixa'`,
           },
           {
             name: 'created_at',
