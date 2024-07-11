@@ -3,7 +3,7 @@
 <p>
 
 ---
-<a href="" target="">
+<a>
     <img alt="To Do List GIF" title="To do List GIF" src="./github/ToDoListBackEnd.gif" width="100%" />    
 </a>
 
