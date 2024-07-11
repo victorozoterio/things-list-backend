@@ -5,14 +5,7 @@ import { SwaggerModule } from '@nestjs/swagger';
 import { swaggerConfig } from './config';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-
-  app.enableCors({
-    origin: 'https://to-do-list-frontend-one.vercel.app',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    credentials: true,
-  });
-
+  const app = await NestFactory.create(AppModule, { cors: true });
   app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
   SwaggerModule.setup('docs', app, SwaggerModule.createDocument(app, swaggerConfig));
   await app.listen(process.env.PORT || 3000);
