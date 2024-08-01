@@ -1,36 +1,27 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
-import { UpdateTaskDto } from './dto/update-task.dto';
-import { InjectRepository } from '@nestjs/typeorm';
-import { TaskEntity } from './entities/task.entity';
-import { Repository } from 'typeorm';
+import { GoogleSheetsService } from '../../config/database/google-sheets.service';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class TasksService {
-  constructor(
-    @InjectRepository(TaskEntity)
-    private readonly repository: Repository<TaskEntity>,
-  ) {}
+  constructor(private readonly googleSheetsService: GoogleSheetsService) {}
 
-  async create(dto: CreateTaskDto, priority: string) {
-    const task = this.repository.create({ ...dto, priority });
-    return await this.repository.save(task);
+  async create(dto: CreateTaskDto) {
+    const newTask = {
+      uuid: uuidv4(),
+      name: dto.name,
+      created_at: 'DATETIME',
+    };
+    await this.googleSheetsService.addTask(newTask);
+    return newTask;
   }
 
   async findAll() {
-    return this.repository.find();
+    return await this.googleSheetsService.getTasks();
   }
 
-  async update(uuid: string, dto: UpdateTaskDto) {
-    const task = await this.repository.findOneBy({ uuid });
-    if (!task) throw new NotFoundException('Task does not exists.');
-    this.repository.merge(task, { ...dto });
-    return this.repository.save(task);
-  }
-
-  async remove(uuid: string) {
-    const task = await this.repository.findOneBy({ uuid });
-    if (!task) throw new NotFoundException('Task does not exists.');
-    return this.repository.remove(task);
+  async delete(uuid: string) {
+    await this.googleSheetsService.deleteTask(uuid);
   }
 }

@@ -6,6 +6,10 @@ export class CreateTaskDto {
   @IsString()
   @ApiProperty()
   name: string;
+
+  uuid: string;
+  created_at: string;
+  updated_at: string;
 }
 
 export class CreateTaskQueryDto {
