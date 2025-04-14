@@ -1,10 +1,8 @@
 {
-  "name": "to-do-list",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
-  "private": true,
-  "license": "UNLICENSED",
+  "name": "things-list-backend",
+  "version": "1.0.0",
+  "author": "Victor Ozoterio",
+  "license": "MIT",
   "engines": {
     "node": "20.x"
   },

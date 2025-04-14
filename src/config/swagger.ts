@@ -1,6 +1,6 @@
 import { DocumentBuilder } from '@nestjs/swagger';
 
 export const swaggerConfig = new DocumentBuilder()
-  .setTitle('To Do List')
-  .setDescription('Documentação do app back-end do To Do List.')
+  .setTitle('Things List')
+  .setDescription('Documentação do app back-end do Things List.')
   .build();
