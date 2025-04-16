@@ -18,7 +18,7 @@ import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { TaskDto } from './dto/task.dto';
 import { CreateTaskResponseDto } from './dto/create-task-response.dto';
 import { UpdateTaskResponseDto } from './dto/update-task-response.dto';
-import { TaskPriority } from '../../utils/enums';
+import { Priority } from '../../utils';
 
 @Controller('tasks')
 @ApiTags('Tasks')
@@ -28,7 +28,7 @@ export class TasksController {
   @Post()
   @ApiOperation({ summary: 'Creates a new task in the system.' })
   @ApiResponse({ status: 201, type: CreateTaskResponseDto })
-  @ApiQuery({ name: 'priority', enum: TaskPriority, required: false })
+  @ApiQuery({ name: 'priority', enum: Priority, required: false })
   async create(@Body() dto: CreateTaskDto, @Query() queryDto: CreateTaskQueryDto) {
     return this.tasksService.create(dto, queryDto.priority);
   }

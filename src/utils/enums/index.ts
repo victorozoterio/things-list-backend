@@ -1,1 +1,2 @@
-export * from './task-priority.enum';
+export * from './environments.enum';
+export * from './priority.enum';

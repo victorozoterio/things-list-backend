@@ -1,12 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { TaskPriority } from '../../../utils/enums';
+import { Priority } from '../../../utils';
 
 export class CreateTaskResponseDto {
   @ApiProperty()
   name: string;
 
   @ApiProperty()
-  priority: TaskPriority;
+  priority: Priority;
 
   @ApiProperty()
   uuid: string;
