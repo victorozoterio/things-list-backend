@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEnum, IsOptional, IsString } from 'class-validator';
-import { TaskPriority } from '../../../utils/enums';
+import { Priority } from '../../../utils';
 
 export class CreateTaskDto {
   @IsString()
@@ -9,8 +9,8 @@ export class CreateTaskDto {
 }
 
 export class CreateTaskQueryDto {
-  @IsEnum(TaskPriority)
+  @IsEnum(Priority)
   @ApiProperty()
   @IsOptional()
-  priority: TaskPriority;
+  priority: Priority;
 }
